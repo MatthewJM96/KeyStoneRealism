@@ -1,0 +1,8 @@
+main: com.github.SamThePsychoticLeprechaun.KeyStone.Realism.KeyStoneRealism
+name: Key Stone Realism
+version: 0.1
+description: This plugin resides within the Key Stone plug-in suite. It offers a fresh new way of playing Minecraft, with many new mechanics and gameplay elements that make the game both more challenging and reqarding.
+commands:
+    KeyStoneRealism:
+        description: This command provides access to all sub-commands of the Realism plug-in.
+        aliases: KSR

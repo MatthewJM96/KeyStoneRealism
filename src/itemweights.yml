@@ -1,0 +1,932 @@
+###########################################
+#/---------------------------------------\#
+#|       Player Data Storage File        |#
+#\---------------------------------------/#
+###########################################
+
+#-----------#
+#   NOTES   #
+#-----------#
+
+# MAJOR NOTES:
+# DO NOT EDIT THE LAYOUT OF THIS DOCUMENT... EVER!!!
+# DO NOT EDIT THE VALUES 'blockcount', 'id<number>' and 'blockid' except when necessary - THIS IS ESSENTIAL!
+
+# When configuring this file:
+#
+# Do NOT use tab, use standard spaces (2 spaces are roughly equal to a tab)
+# To avoid this, I recommend using Notepad++ over the standard Notepad (Google it if you don't already have it)
+# When using Notepad++ you can change tabs to be replaced by a configurable number of spaces by going to the
+# Settings tool bar option, then to Preferences and finally to Language Menu/Tab Settings.
+#
+# Do NOT change the format of the files; i.e. if an option is indented, don't remove the indentation.
+#
+# If you want to add extra information for extra ease of use; all comment lines should start with a hashtag.
+    # Hopefully adding extra comments should be unneseccary as I
+    # Aim to keep this config file as well explained as I can.
+#
+# For any number values never include decimals if they are not initially provided (i.e. 20 should not
+# be changed to 20.1 or 20.1234)
+
+# If you wish to add new blocks to be checked, give all values as default following the layout shown in the example.
+# For every block you add you MUST increase the value of 'blockcount' by 1 for your additions to have an effect.
+
+#-------------------#
+#   Block Weights   #
+#-------------------#
+
+blockcount: 294
+
+# Example:
+# id<number>:
+#   blockid: 234
+#   weight: 0.01
+
+id1:
+  blockid: 1
+  weight: 0.0025
+id2:
+  blockid: 2
+  weight: 0.0005
+id3:
+  blockid: 3
+  weight: 0.0005
+id4:
+  blockid: 4
+  weight: 0.0025
+id5:
+  blockid: 5
+  weight: 0.001
+id6:
+  blockid: 6
+  weight: 0.00005
+id7:
+  blockid: 12
+  weight: 0.0003
+id8:
+  blockid: 13
+  weight: 0.0004
+id9:
+  blockid: 14
+  weight: 0.003
+id10:
+  blockid: 15
+  weight: 0.0035
+id11:
+  blockid: 16
+  weight: 0.002
+id12:
+  blockid: 17
+  weight: 0.0012
+id13:
+  blockid: 18
+  weight: 0.0001
+id14:
+  blockid: 19
+  weight: 0.0002
+id15:
+  blockid: 20
+  weight: 0.00035
+id16:
+  blockid: 21
+  weight: 0.003
+id17:
+  blockid: 22
+  weight: 0.0035
+id18:
+  blockid: 23
+  weight: 0.002
+id19:
+  blockid: 24
+  weight: 0.00035
+id20:
+  blockid: 25
+  weight: 0.0015
+id21:
+  blockid: 26
+  weight: 0.001
+id22:
+  blockid: 27
+  weight: 0.0005
+id23:
+  blockid: 28
+  weight: 0.0005
+id24:
+  blockid: 29
+  weight: 0.003
+id25:
+  blockid: 30
+  weight: 0.000005
+id26:
+  blockid: 33
+  weight: 0.003
+id27:
+  blockid: 35
+  weight: 0.00006
+id28:
+  blockid: 37
+  weight: 0.000005
+id29:
+  blockid: 38
+  weight: 0.000005
+id30:
+  blockid: 39
+  weight: 0.000005
+id31:
+  blockid: 40
+  weight: 0.000005
+id32:
+  blockid: 41
+  weight: 0.005
+id33:
+  blockid: 42
+  weight: 0.007
+id34:
+  blockid: 44
+  weight: 0.0013
+id35:
+  blockid: 45
+  weight: 0.0015
+id36:
+  blockid: 46
+  weight: 0.0005
+id37:
+  blockid: 47
+  weight: 0.0007
+id38:
+  blockid: 48
+  weight: 0.0025
+id39:
+  blockid: 49
+  weight: 0.004
+id40:
+  blockid: 50
+  weight: 0.00001
+id41:
+  blockid: 53
+  weight: 0.00075
+id42:
+  blockid: 54
+  weight: 0.0005
+id43:
+  blockid: 56
+  weight: 0.0035
+id44:
+  blockid: 57
+  weight: 0.005
+id45:
+  blockid: 58
+  weight: 0.001
+id46:
+  blockid: 61
+  weight: 0.0013
+id47:
+  blockid: 65
+  weight: 0.0002
+id48:
+  blockid: 66
+  weight: 0.0005
+id49:
+  blockid: 67
+  weight: 0.002
+id50:
+  blockid: 69
+  weight: 0.00001
+id51:
+  blockid: 70
+  weight: 0.0003
+id52:
+  blockid: 72
+  weight: 0.00013
+id53:
+  blockid: 73
+  weight: 0.0002
+id54:
+  blockid: 76
+  weight: 0.00001
+id55:
+  blockid: 77
+  weight: 0.000015
+id56:
+  blockid: 78
+  weight: 0.000013
+id57:
+  blockid: 79
+  weight: 0.0002
+id58:
+  blockid: 80
+  weight: 0.0001
+id59:
+  blockid: 81
+  weight: 0.0005
+id60:
+  blockid: 82
+  weight: 0.0005
+id71:
+  blockid: 84
+  weight: 0.0015
+id72:
+  blockid: 85
+  weight: 0.0003
+id73:
+  blockid: 86
+  weight: 0.0005
+id74:
+  blockid: 87
+  weight: 0.0025
+id75:
+  blockid: 88
+  weight: 0.00045
+id76:
+  blockid: 89
+  weight: 0.00035
+id77:
+  blockid: 91
+  weight: 0.0005
+id78:
+  blockid: 96
+  weight: 0.0005
+id79:
+  blockid: 97
+  weight: 0.0025
+id80:
+  blockid: 98
+  weight: 0.0025
+id81:
+  blockid: 99
+  weight: 0.00035
+id82:
+  blockid: 100
+  weight: 0.00035
+id83:
+  blockid: 101
+  weight: 0.002
+id84:
+  blockid: 102
+  weight: 0.0001
+id85:
+  blockid: 103
+  weight: 0.0005
+id86:
+  blockid: 106
+  weight: 0.000005
+id87:
+  blockid: 107
+  weight: 0.00035
+id88:
+  blockid: 108
+  weight: 0.001
+id89:
+  blockid: 109
+  weight: 0.0018
+id90:
+  blockid: 110
+  weight: 0.0005
+id91:
+  blockid: 111
+  weight: 0.000005
+id92:
+  blockid: 112
+  weight: 0.003
+id93:
+  blockid: 113
+  weight: 0.002
+id94:
+  blockid: 114
+  weight: 0.0024
+id95:
+  blockid: 116
+  weight: 0.003
+id96:
+  blockid: 121
+  weight: 0.002
+id97:
+  blockid: 122
+  weight: 0.1
+id98:
+  blockid: 123
+  weight: 0.0004
+id99:
+  blockid: 124
+  weight: 0.0004
+id100:
+  blockid: 126
+  weight: 0.0005
+id101:
+  blockid: 128
+  weight: 0.00027
+id102:
+  blockid: 129
+  weight: 0.0002
+id103:
+  blockid: 130
+  weight: 0.003
+id104:
+  blockid: 131
+  weight: 0.00003
+id105:
+  blockid: 133
+  weight: 0.004
+id106:
+  blockid: 134
+  weight: 0.00075
+id107:
+  blockid: 135
+  weight: 0.00075
+id108:
+  blockid: 136
+  weight: 0.00075
+id109:
+  blockid: 138
+  weight: 0.004
+id110:
+  blockid: 139
+  weight: 0.0024
+id111:
+  blockid: 143
+  weight: 0.000025
+id112:
+  blockid: 145
+  weight: 0.006
+id113:
+  blockid: 146
+  weight: 0.0005
+id114:
+  blockid: 147
+  weight: 0.00063
+id115:
+  blockid: 148
+  weight: 0.00088
+id116:
+  blockid: 151
+  weight: 0.00015
+id117:
+  blockid: 152
+  weight: 0.003
+id118:
+  blockid: 153
+  weight: 0.0002
+id119:
+  blockid: 154
+  weight: 0.004
+id120:
+  blockid: 155
+  weight: 0.0025
+id121:
+  blockid: 156
+  weight: 0.0018
+id122:
+  blockid: 157
+  weight: 0.0005
+id123:
+  blockid: 158
+  weight: 0.0013
+id124:
+  blockid: 159
+  weight: 0.0005
+id125:
+  blockid: 170
+  weight: 0.00005
+id126:
+  blockid: 171
+  weight: 0.0000075
+id127:
+  blockid: 172
+  weight: 0.0005
+id128:
+  blockid: 173
+  weight: 0.001
+id129:
+  blockid: 256
+  weight: 0.0013
+id130:
+  blockid: 257
+  weight: 0.0027
+id131:
+  blockid: 258
+  weight: 0.0023
+id132:
+  blockid: 259
+  weight: 0.0006
+id133:
+  blockid: 260
+  weight: 0.0002
+id134:
+  blockid: 261
+  weight: 0.0004
+id135:
+  blockid: 262
+  weight: 0.00002
+id136:
+  blockid: 263
+  weight: 0.0001
+id137:
+  blockid: 264
+  weight: 0.00063
+id138:
+  blockid: 265
+  weight: 0.00078
+id139:
+  blockid: 266
+  weight: 0.00055
+id140:
+  blockid: 267
+  weight: 0.003
+id141:
+  blockid: 268
+  weight: 0.0002
+id142:
+  blockid: 269
+  weight: 0.0001
+id143:
+  blockid: 270
+  weight: 0.00015
+id144:
+  blockid: 271
+  weight: 0.0013
+id145:
+  blockid: 272
+  weight: 0.0008
+id146:
+  blockid: 273
+  weight: 0.0003
+id147:
+  blockid: 274
+  weight: 0.0013
+id148:
+  blockid: 275
+  weight: 0.0011
+id149:
+  blockid: 276
+  weight: 0.003
+id150:
+  blockid: 277
+  weight: 0.0013
+id151:
+  blockid: 278
+  weight: 0.0027
+id152:
+  blockid: 279
+  weight: 0.0023
+id153:
+  blockid: 280
+  weight: 0.00001
+id154:
+  blockid: 281
+  weight: 0.0001
+id155:
+  blockid: 282
+  weight: 0.0002
+id156:
+  blockid: 283
+  weight: 0.0008
+id157:
+  blockid: 284
+  weight: 0.0003
+id158:
+  blockid: 285
+  weight: 0.0013
+id159:
+  blockid: 286
+  weight: 0.0011
+id160:
+  blockid: 287
+  weight: 0.000005
+id171:
+  blockid: 288
+  weight: 0.00001
+id172:
+  blockid: 289
+  weight: 0.00003
+id173:
+  blockid: 290
+  weight: 0.0001
+id174:
+  blockid: 291
+  weight: 0.0003
+id175:
+  blockid: 292
+  weight: 0.0013
+id176:
+  blockid: 293
+  weight: 0.00035
+id177:
+  blockid: 294
+  weight: 0.0003
+id178:
+  blockid: 295
+  weight: 0.000002
+id179:
+  blockid: 296
+  weight: 0.000007
+id180:
+  blockid: 297
+  weight: 0.00003
+id181:
+  blockid: 298
+  weight: 0.0001
+id182:
+  blockid: 299
+  weight: 0.00035
+id183:
+  blockid: 300
+  weight: 0.00025
+id184:
+  blockid: 301
+  weight: 0.0001
+id185:
+  blockid: 302
+  weight: 0.0003
+id186:
+  blockid: 303
+  weight: 0.0011
+id187:
+  blockid: 304
+  weight: 0.00075
+id188:
+  blockid: 305
+  weight: 0.0003
+id189:
+  blockid: 306
+  weight: 0.0009
+id190:
+  blockid: 307
+  weight: 0.0033
+id191:
+  blockid: 308
+  weight: 0.0023
+id192:
+  blockid: 309
+  weight: 0.0009
+id193:
+  blockid: 310
+  weight: 0.0009
+id194:
+  blockid: 311
+  weight: 0.0033
+id195:
+  blockid: 312
+  weight: 0.0023
+id196:
+  blockid: 313
+  weight: 0.0009
+id197:
+  blockid: 314
+  weight: 0.0006
+id198:
+  blockid: 315
+  weight: 0.0022
+id199:
+  blockid: 316
+  weight: 0.0015
+id200:
+  blockid: 317
+  weight: 0.0006
+id201:
+  blockid: 318
+  weight: 0.00015
+id202:
+  blockid: 319
+  weight: 0.00005
+id203:
+  blockid: 320
+  weight: 0.00005
+id204:
+  blockid: 321
+  weight: 0.0001
+id205:
+  blockid: 322
+  weight: 0.0003
+id206:
+  blockid: 323
+  weight: 0.0001
+id207:
+  blockid: 324
+  weight: 0.0007
+id208:
+  blockid: 325
+  weight: 0.003
+id209:
+  blockid: 326
+  weight: 0.013
+id210:
+  blockid: 327
+  weight: 0.025
+id211:
+  blockid: 328
+  weight: 0.003
+id212:
+  blockid: 329
+  weight: 0.00015
+id213:
+  blockid: 330
+  weight: 0.003
+id214:
+  blockid: 331
+  weight: 0.00005
+id215:
+  blockid: 332
+  weight: 0.00005
+id216:
+  blockid: 333
+  weight: 0.00075
+id217:
+  blockid: 334
+  weight: 0.000075
+id218:
+  blockid: 335
+  weight: 0.017
+id219:
+  blockid: 336
+  weight: 0.0007
+id220:
+  blockid: 337
+  weight: 0.00035
+id221:
+  blockid: 338
+  weight: 0.00015
+id222:
+  blockid: 339
+  weight: 0.00015
+id223:
+  blockid: 340
+  weight: 0.0005
+id224:
+  blockid: 341
+  weight: 0.00035
+id225:
+  blockid: 342
+  weight: 0.004
+id226:
+  blockid: 343
+  weight: 0.005
+id227:
+  blockid: 344
+  weight: 0.00007
+id228:
+  blockid: 345
+  weight: 0.0003
+id229:
+  blockid: 346
+  weight: 0.003
+id230:
+  blockid: 347
+  weight: 0.0003
+id231:
+  blockid: 348
+  weight: 0.00005
+id232:
+  blockid: 349
+  weight: 0.00013
+id233:
+  blockid: 350
+  weight: 0.00013
+id234:
+  blockid: 351
+  weight: 0.0001
+id235:
+  blockid: 352
+  weight: 0.0005
+id236:
+  blockid: 353
+  weight: 0.00005
+id237:
+  blockid: 354
+  weight: 0.00015
+id238:
+  blockid: 355
+  weight: 0.0005
+id239:
+  blockid: 356
+  weight: 0.00013
+id240:
+  blockid: 357
+  weight: 0.00003
+id241:
+  blockid: 358
+  weight: 0.00015
+id242:
+  blockid: 359
+  weight: 0.00013
+id243:
+  blockid: 360
+  weight: 0.00005
+id244:
+  blockid: 361
+  weight: 0.000005
+id245:
+  blockid: 362
+  weight: 0.000005
+id246:
+  blockid: 363
+  weight: 0.00005
+id247:
+  blockid: 364
+  weight: 0.00005
+id248:
+  blockid: 365
+  weight: 0.00005
+id249:
+  blockid: 366
+  weight: 0.00005
+id250:
+  blockid: 367
+  weight: 0.00003
+id251:
+  blockid: 368
+  weight: 0.002
+id252:
+  blockid: 369
+  weight: 0.002
+id253:
+  blockid: 370
+  weight: 0.002
+id254:
+  blockid: 371
+  weight: 0.0002
+id255:
+  blockid: 372
+  weight: 0.000005
+id256:
+  blockid: 373
+  weight: 0.0006
+id257:
+  blockid: 374
+  weight: 0.0003
+id258:
+  blockid: 375
+  weight: 0.00004
+id259:
+  blockid: 376
+  weight: 0.00004
+id260:
+  blockid: 377
+  weight: 0.0004
+id261:
+  blockid: 378
+  weight: 0.002
+id262:
+  blockid: 379
+  weight: 0.0025
+id263:
+  blockid: 380
+  weight: 0.003
+id264:
+  blockid: 381
+  weight: 0.006
+id265:
+  blockid: 382
+  weight: 0.00005
+id266:
+  blockid: 384
+  weight: 0.0008
+id267:
+  blockid: 385
+  weight: 0.004
+id268:
+  blockid: 386
+  weight: 0.0007
+id269:
+  blockid: 387
+  weight: 0.0005
+id270:
+  blockid: 388
+  weight: 0.00045
+id271:
+  blockid: 389
+  weight: 0.0002
+id272:
+  blockid: 390
+  weight: 0.002
+id273:
+  blockid: 391
+  weight: 0.00003
+id274:
+  blockid: 392
+  weight: 0.00005
+id275:
+  blockid: 393
+  weight: 0.00005
+id276:
+  blockid: 394
+  weight: 0.00005
+id277:
+  blockid: 395
+  weight: 0.00015
+id278:
+  blockid: 396
+  weight: 0.00004
+id279:
+  blockid: 398
+  weight: 0.003
+id280:
+  blockid: 399
+  weight: 0.02
+id281:
+  blockid: 400
+  weight: 0.0002
+id282:
+  blockid: 401
+  weight: 0.00035
+id283:
+  blockid: 402
+  weight: 0.000085
+id284:
+  blockid: 403
+  weight: 0.0005
+id285:
+  blockid: 404
+  weight: 0.00013
+id286:
+  blockid: 405
+  weight: 0.00075
+id287:
+  blockid: 406
+  weight: 0.00075
+id288:
+  blockid: 407
+  weight: 0.005
+id289:
+  blockid: 408
+  weight: 0.007
+id290:
+  blockid: 417
+  weight: 0.07
+id291:
+  blockid: 418
+  weight: 0.03
+id292:
+  blockid: 419
+  weight: 0.06
+id293:
+  blockid: 420
+  weight: 0.00075
+id294:
+  blockid: 421
+  weight: 0.00033
+  
+# Worn Armour:
+armourcount: 20
+
+armourid1:
+  blockid: 298
+  weight: 0.02
+armourid2:
+  blockid: 299
+  weight: 0.1
+armourid3:
+  blockid: 300
+  weight: 0.08
+armourid4:
+  blockid: 301
+  weight: 0.02
+armourid5:
+  blockid: 302
+  weight: 0.03
+armourid6:
+  blockid: 303
+  weight: 0.15
+armourid7:
+  blockid: 304
+  weight: 0.12
+armourid8:
+  blockid: 305
+  weight: 0.03
+armourid9:
+  blockid: 306
+  weight: 0.06
+armourid10:
+  blockid: 307
+  weight: 0.3
+armourid11:
+  blockid: 308
+  weight: 0.24
+armourid12:
+  blockid: 309
+  weight: 0.06
+armourid13:
+  blockid: 310
+  weight: 0.05
+armourid14:
+  blockid: 311
+  weight: 0.25
+armourid15:
+  blockid: 312
+  weight: 0.2
+armourid16:
+  blockid: 313
+  weight: 0.06
+armourid17:
+  blockid: 314
+  weight: 0.04
+armourid18:
+  blockid: 315
+  weight: 0.2
+armourid19:
+  blockid: 316
+  weight: 0.16
+armourid20:
+  blockid: 317
+  weight: 0.04
+  
+
