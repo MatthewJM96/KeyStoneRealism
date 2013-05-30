@@ -8,7 +8,7 @@ import java.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.YAML.LoadYaml;
+import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.YAML.YamlLoader;
 
 public class WeightCalculator {
 	
@@ -20,10 +20,10 @@ public class WeightCalculator {
 		
 		double weight = 100.00;
 		
-		LoadYaml ly = new LoadYaml();
+		YamlLoader yl = new YamlLoader();
 		//To Be Initialised
-		HashMap<Integer, Double> blockWeights = ly.getItemWeights();
-		HashMap<Integer, Double> armourWeights = ly.getArmourWeights();
+		HashMap<Integer, Double> blockWeights = yl.getItemWeights();
+		HashMap<Integer, Double> armourWeights = yl.getArmourWeights();
 		
 		int boots = player.getEquipment().getBoots().getData().getItemTypeId();
 		int chest = player.getEquipment().getChestplate().getData().getItemTypeId();
