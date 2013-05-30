@@ -1,14 +1,12 @@
 package com.github.SamThePsychoticLeprechaun.KeyStone.Realism;
 
-import java.io.File;
 import java.util.logging.Logger;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.Listeners.WeightListener;
-import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.YAML.LoadYaml;
-import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.YAML.SaveYaml;
+import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.YAML.YamlLoader;
 
 public class KeyStoneRealism extends JavaPlugin {
 
@@ -18,10 +16,8 @@ public class KeyStoneRealism extends JavaPlugin {
 	private Logger log;
 	
 	private static YamlConfiguration config;
-	private static File configFile;
 	
 	private static YamlConfiguration weights;
-	private static File weightsFile;
 	
 	public KeyStoneRealism() {
 		return;
@@ -35,20 +31,17 @@ public class KeyStoneRealism extends JavaPlugin {
 		setPlugin(this);
 		setLog(this.getLogger());
 		
-		final LoadYaml ly = new LoadYaml();		
-		final SaveYaml sy = new SaveYaml();
+		final YamlLoader yl = new YamlLoader();	
 		
 		setConfig(new YamlConfiguration());
 		setWeights(new YamlConfiguration());
-		setConfigFile(new File(getDataFolder(), "config.yml"));
-		setWeightsFile(new File(getDataFolder(), "itemweights.yml"));
 		
-		ly.yamlStartup();
+		yl.yamlStartup();
 		
 		plugin.getServer().getScheduler().runTaskLater(this, new Runnable() {
 			
 			public void run() {
-				sy.yamlShutdown();
+				yl.yamlShutdown();
 			}
 			
 		}, 20);
@@ -62,8 +55,8 @@ public class KeyStoneRealism extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		
-		final SaveYaml sy = new SaveYaml();
-		sy.yamlShutdown();
+		final YamlLoader yl = new YamlLoader();
+		yl.yamlShutdown();
 		
 	}
 
@@ -105,18 +98,6 @@ public class KeyStoneRealism extends JavaPlugin {
 		
 	}
 
-	public File getConfigFile() {
-		
-		return configFile;
-		
-	}
-
-	public void setConfigFile(File configFile) {
-		
-		KeyStoneRealism.configFile = configFile;
-		
-	}
-
 	public YamlConfiguration getWeights() {
 		
 		return weights;
@@ -126,18 +107,6 @@ public class KeyStoneRealism extends JavaPlugin {
 	public void setWeights(YamlConfiguration weights) {
 		
 		KeyStoneRealism.weights = weights;
-		
-	}
-
-	public File getWeightsFile() {
-		
-		return weightsFile;
-		
-	}
-
-	public void setWeightsFile(File weightsFile) {
-		
-		KeyStoneRealism.weightsFile = weightsFile;
 		
 	}
 	

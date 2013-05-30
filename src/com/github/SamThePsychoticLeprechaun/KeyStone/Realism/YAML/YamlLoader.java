@@ -6,44 +6,49 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.KeyStoneRealism;
 import com.github.SamThePsychoticLeprechaun.KeyStone.Realism.YAML.YamlType.YamlTypes;
 
-public class LoadYaml {
-	
+public class YamlLoader {
+
 //---------------------------------------------------------------------------------------\\
 
 	KeyStoneRealism plugin = new KeyStoneRealism();
 	
-	public LoadYaml() {
+	public YamlLoader() {
 		return;
 	}
 	
+	public YamlConfiguration yamlLoader(String file) {
+		
+		fileConfig = load(file);
+		
+		return fileConfig;		
+		
+	}
+	
 	Logger log = plugin.getLog();
+	
+	private HashMap<Integer, Double> itemWeights = new HashMap<Integer, Double>();
+	private int itemcount;
+	private HashMap<Integer, Double> armourWeights = new HashMap<Integer, Double>();
+	private int armourcount;
 	
 	File file;
 	YamlConfiguration fileConfig;
 	
 //---------------------------------------------------------------------------------------\\
 
-	private HashMap<Integer, Double> itemWeights = new HashMap<Integer, Double>();
-	private int itemcount;
-	private HashMap<Integer, Double> armourWeights = new HashMap<Integer, Double>();
-	private int armourcount;
-	
 	public void yamlStartup() {
-		
-		if(plugin.equals(null)) {
-			Bukkit.broadcastMessage("Error 123");
-		} else {
-		
+				
 		overwriteYaml(YamlTypes.ALL);
 		
 		fileConfig = plugin.getWeights();
@@ -52,14 +57,17 @@ public class LoadYaml {
 		int indMax = fileConfig.getInt("blockcount");
 		itemcount = indMax;
 		
+		int blockID;
+		double weight;
+		
 		while(indMin <= indMax) {
 			
-			int blockID = fileConfig.getInt("id" + Integer.toString(indMin) + ".blockid");
-			double weight = fileConfig.getDouble("id" + Integer.toString(indMin) + ".weight");
+			blockID = fileConfig.getInt("id" + Integer.toString(indMin) + ".blockid");
+			weight = fileConfig.getDouble("id" + Integer.toString(indMin) + ".weight");
 			
 			itemWeights.put(blockID, weight);
 			
-			indMin += 1;
+			indMin++;
 			
 		}
 		
@@ -69,23 +77,67 @@ public class LoadYaml {
 		
 		while(indMin <= indMax) {
 			
-			int blockID = fileConfig.getInt("armourid" + Integer.toString(indMin) + ".blockid");
-			double weight = fileConfig.getDouble("armourid" + Integer.toString(indMin) + ".weight");
+			blockID = fileConfig.getInt("armourid" + Integer.toString(indMin) + ".blockid");
+			weight = fileConfig.getDouble("armourid" + Integer.toString(indMin) + ".weight");
 			
 			armourWeights.put(blockID, weight);
 			
-			indMin += 1;
+			indMin++;
 			
-		}
-		
 		}
 		
 	}
 	
 //---------------------------------------------------------------------------------------\\
 
+	public void yamlShutdown() {
+		
+		fileConfig = new YamlConfiguration();
+		
+		List<Integer> blockID = new ArrayList<Integer>(itemWeights.keySet());
+		List<Double> blockWeightList = new ArrayList<Double>(itemWeights.values());
+		
+		int indMin = 1;
+		int indMax = itemcount;
+		
+		while(indMin <= indMax) {
+			
+			fileConfig.set("id" + Integer.toString(indMin) + ".blockid", blockID.get(indMin));
+			fileConfig.set("id" + Integer.toString(indMin) + ".weight", blockWeightList.get(indMin));
+			
+			indMin += 1;
+			
+		}
+		
+		fileConfig.set("blockcount", itemcount);
+		
+		List<Integer> armourID = new ArrayList<Integer>(armourWeights.keySet());
+		List<Double> armourWeightList = new ArrayList<Double>(armourWeights.values());
+		
+		indMin = 1;
+		indMax = armourcount;
+		
+		while(indMin <= indMax) {
+			
+			fileConfig.set("armourid" + Integer.toString(indMin) + ".blockid", armourID.get(indMin));
+			fileConfig.set("armourid" + Integer.toString(indMin) + ".weight", armourWeightList.get(indMin));
+			
+			indMin += 1;
+			
+		}
+		
+		fileConfig.set("armourcount", armourcount);
+		
+		plugin.setWeights(fileConfig);
+		
+		saveYaml(YamlTypes.ALL);
+		
+	}
+	
+//---------------------------------------------------------------------------------------\\
+
 	/**
-	 * Overwrites specified yaml files, i.e. config.yml and itemweights.yml. 
+	 * Loads specified yaml files, i.e. config.yml and itemweights.yml. 
 	 * 
 	 * @param yamlType - The yaml file(s) to be loaded. 
 	 * </p>Possible YamlTypes are: 
@@ -97,23 +149,25 @@ public class LoadYaml {
 		
 		if (yamlType.equals(YamlTypes.ALL)) {
 			
-			loadConf();
-			loadWeights();
+			fileConfig = load("config.yml");
+			plugin.setConfig(fileConfig);
+			fileConfig = load("itemweights.yml");
+			plugin.setWeights(fileConfig);
 			
 		} else if (yamlType.equals(YamlTypes.CONFIG)) {
-			
-			loadConf();
+
+			fileConfig = load("config.yml");
+			plugin.setConfig(fileConfig);
 			
 		} else {
-			
-			loadWeights();
+
+			fileConfig = load("itemweights.yml");
+			plugin.setWeights(fileConfig);
 			
 		}
 		
 	}
 	
-//---------------------------------------------------------------------------------------\\
-
 	/**
 	 * Overwrites specified yaml files, i.e. config.yml and itemweights.yml. 
 	 * 
@@ -127,34 +181,87 @@ public class LoadYaml {
 		
 		if (yamlType.equals(YamlTypes.ALL)) {
 			
-			overwriteConf();
-			overwriteWeights();
+			fileConfig = overwrite("config.yml");
+			plugin.setConfig(fileConfig);
+			fileConfig = overwrite("itemweights.yml");
+			plugin.setWeights(fileConfig);
 			
 		} else if (yamlType.equals(YamlTypes.CONFIG)) {
-			
-			overwriteConf();
+
+			fileConfig = overwrite("config.yml");
+			plugin.setConfig(fileConfig);
 			
 		} else {
-			
-			overwriteWeights();
+
+			fileConfig = overwrite("itemweights.yml");
+			plugin.setWeights(fileConfig);
 			
 		}
 		
 	}
 	
+	/**
+	 * Saves specified yaml files, i.e. config.yml and factions.yml. 
+	 * 
+	 * @param yamlType - The yaml file(s) to be loaded. 
+	 * </p>Possible YamlTypes are: 
+	 * </p> ALL - This saves all yaml files. 
+	 * </p> CONFIG - This saves the config file.
+	 * </p> WEIGHTS - This saves the item weights file.
+	 */
+	public void saveYaml(YamlTypes yamlType) {
+			
+		if (yamlType.equals(YamlTypes.ALL)) {
+				
+			save("config.yml", plugin.getConfig());
+			save("itemweights.yml", plugin.getWeights());
+				
+		} else if (yamlType.equals(YamlTypes.CONFIG)) {
+				
+			save("config.yml", plugin.getConfig());
+				
+		} else {
+				
+			save("itemweights.yml", plugin.getWeights());
+				
+		}
+			
+	}
+	
 //---------------------------------------------------------------------------------------\\
-
-	private void overwriteConf() {
+	
+	private YamlConfiguration overwrite(String path) {
 		
-		file = plugin.getConfigFile();
-		fileConfig = plugin.getConfig();
+		File fl = new File(plugin.getDataFolder(), path);
 		
-		file.getParentFile().mkdirs();
-        copy(plugin.getResource("config.yml"), file);
-		plugin.setConfigFile(file);
+		fl.getParentFile().mkdirs();
+        copy(plugin.getResource(path), file);
 		
 		try {
-			fileConfig.load(file);
+			fileConfig.load(fl);
+		} catch (FileNotFoundException e) {
+			log.info("Config file was not found!");
+			e.printStackTrace();
+		} catch (IOException e) {
+			log.info("Error loading config file!");
+			e.printStackTrace();
+		} catch (InvalidConfigurationException e) {
+			log.info("Error loading config file!");
+			e.printStackTrace();
+		}
+
+		return fileConfig;
+		
+	}
+	
+//---------------------------------------------------------------------------------------\\
+
+	private YamlConfiguration load(String path) {
+		
+		File fl = new File(plugin.getDataFolder(), path);
+		
+		try {
+			fileConfig.load(fl);
 		} catch (FileNotFoundException e) {
 			log.info("Config file was not found!");
 			e.printStackTrace();
@@ -166,108 +273,54 @@ public class LoadYaml {
 			e.printStackTrace();
 		}
 		
-		plugin.setConfig(fileConfig);
+		return fileConfig;
 		
-	}
-	
-	private void overwriteWeights() {
-		
-		file = plugin.getWeightsFile();
-		fileConfig = plugin.getWeights();
-		
-		file.getParentFile().mkdirs();
-        copy(plugin.getResource("itemweights.yml"), file);
-		plugin.setWeightsFile(file);
-		
-		try {
-			fileConfig.load(file);
-		} catch (FileNotFoundException e) {
-			log.info("Item Weights file was not found!");
-			e.printStackTrace();
-		} catch (IOException e) {
-			log.info("Error loading Item Weights file!");
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
-			log.info("Error loading Item Weights file!");
-			e.printStackTrace();
-		}
-		
-		plugin.setWeights(fileConfig);
-		
-	}
+	}	
 	
 //---------------------------------------------------------------------------------------\\
 
-	private void loadConf() {
+	private void save(String path, YamlConfiguration fileConfig) {
 		
-		file = plugin.getConfigFile();
-		fileConfig = plugin.getConfig();
+		File fl = new File(plugin.getDataFolder(), path);
 		
-		try {
-			fileConfig.load(file);
-		} catch (FileNotFoundException e) {
-			log.info("Config file was not found!");
-			e.printStackTrace();
-		} catch (IOException e) {
-			log.info("Error loading config file!");
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
-			log.info("Error loading config file!");
-			e.printStackTrace();
-		}
-		
-		plugin.setConfig(fileConfig);
-		
-	}
-	
-	private void loadWeights() {
-		
-		file = plugin.getWeightsFile();
-		fileConfig = plugin.getWeights();
-		
-		try {
-			fileConfig.load(file);
+		try{
+			fileConfig.save(fl);			
 		} catch (FileNotFoundException e) {
 			log.info("Item Weights file was not found!");
 			e.printStackTrace();
 		} catch (IOException e) {
-			log.info("Error loading Item Weights file!");
-			e.printStackTrace();
-		} catch (InvalidConfigurationException e) {
-			log.info("Error loading Item Weights file!");
+			log.info("Error while saving Item Weights file!");
 			e.printStackTrace();
 		}
-		
-		plugin.setWeights(fileConfig);
 		
 	}
 	
 //---------------------------------------------------------------------------------------\\
 
 	private void copy(InputStream inputStream, File file) {
-		 
-        try {
- 
-            OutputStream outputStream = new FileOutputStream(file);
-            byte[] buf = new byte[1024];
-            int len;
- 
-            while((len=inputStream.read(buf))>0){
- 
-           outputStream.write(buf,0,len);
- 
-            }
- 
-            outputStream.close();
-            inputStream.close();
- 
-        } catch (Exception e) {
- 
-            e.printStackTrace();
- 
-        }
- 
-    }
+			 
+		try {
+	 
+			OutputStream outputStream = new FileOutputStream(file);	
+			byte[] buf = new byte[1024];
+	        int len;
+	 
+	        while((len=inputStream.read(buf))>0){
+	 
+	        	outputStream.write(buf,0,len);
+	 
+	        }
+	 
+	        outputStream.close();
+	        inputStream.close();
+	 
+		} catch (Exception e) {
+	 
+			e.printStackTrace();
+	 
+		}
+	 
+	}
 	
 //---------------------------------------------------------------------------------------\\
 
